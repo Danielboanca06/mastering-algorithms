@@ -33,15 +33,15 @@ const invertTreeBFS = function (root) {
   // Itterative BFS
   if (!root) return root;
 
-  const stack = [root];
+  const queue = [root];
 
   while (stack.length) {
-    const current = stack.pop();
+    const current = queue.shift();
 
     [current.left, current.right] = [current.right, current.left];
 
-    if (current.left) stack.push(current.left);
-    if (current.right) stack.push(current.right);
+    if (current.left) queue.unshift(current.left);
+    if (current.right) queue.unshift(current.right);
   }
   return root;
 };
